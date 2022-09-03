@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use \App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,65 +21,12 @@ Route::get('/', function () {
 
 
 
+Route::resource('articles', ArticleController::class);
 
 
 
+//Route::get('articles', [ArticleController::class, 'index'])->name('articles');
+//Route::post('store-form', [ArticleController::class, 'store']);
 
-//Route::redirect('/test/', '/test2/');
-
-
-Route::view('/welcome', 'welcome');
-
-
-
-Route::get('/rrr', function (Request $request) {
-
-
-});
-
-
-
-Route::get('/search/{search}', function ($search) {
-    return $search;
-})->where('search', 'salam');
-
-
-
-
-
-
-
-Route::prefix('admin')->group(function () {
-
-
-    Route::get('/user/profile', function () {
-        return "kiiir";
-    })->name('profile');
-
-
-
-    Route::match(['get', 'post'], '/test2/', function () {
-        $url = route('profile');
-        return $url;
-    });
-
-
-
-    Route::any('/test/', function () {
-        return 'salam laravel';
-    });
-
-});
-
-
-
-
-
-
-Route::name('admin.')->group(function () {
-    Route::get('/users', function () {
-        return 'gggg';
-    })->name('users');
-});
 
 
